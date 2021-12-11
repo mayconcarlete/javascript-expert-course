@@ -1,5 +1,6 @@
 const { readFile } = require('fs/promises')
 const { error } = require('./constants')
+const User = require('./user')
 const DEFAULT_OPTION = {
   maxLines: 3,
   fields: ['id','name','profession','age']
@@ -10,7 +11,7 @@ class File {
     const content = await this.getFileContent(filePath)
     const validation = File.isValid(content)
     if(!validation.valid) throw new Error(validation.error)
-    return content
+    return File.parseCSVToJSON(content)
   }
 
   static async getFileContent(filePath){
@@ -26,8 +27,8 @@ class File {
       }
     }
     const isContentLengthAccepted = (
-      fileWithoutHeader.length > 1 &&
-      fileWithoutHeader.length <= option.maxLines +1
+      fileWithoutHeader.length > 0 &&
+      fileWithoutHeader.length <= option.maxLines
     )
     if(!isContentLengthAccepted){
       return {
@@ -35,6 +36,22 @@ class File {
       }
     }
     return { valid: true }
+  }
+
+  static parseCSVToJSON(csvString){
+    const lines = csvString.split('\n')
+    // remove o primeiro item e joga na variavel
+    const firstLine = lines.shift()
+    const header = firstLine.split(',')
+    const users = lines.map( line => {
+      const columns = line.split(',')
+      let user = {}
+      for (const index in columns){
+        user[header[index]] = columns[index]
+      }
+      return new User(user)
+    })
+    return users
   }
 }
 
