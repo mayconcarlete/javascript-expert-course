@@ -23,5 +23,9 @@
     "nyc": "^15.1.0",
     "sinon": "^9.2.4",
     "supertest": "^6.1.6"
+  },
+  "dependencies": {
+    "email-validator": "^2.0.4",
+    "validator": "^13.7.0"
   }
 }
