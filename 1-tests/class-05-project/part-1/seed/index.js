@@ -1,12 +1,13 @@
+const { join } = require('path')
+const { writeFile } = require('fs/promises')
 const faker = require('faker')
 
 const Car = require('../src/entitites/car')
 const CarCategory = require('../src/entitites/car-category')
 const Customer = require('../src/entitites/customer')
-const { join } = require('path')
-const seederBaseFolder = join(__dirname, '../', 'database')
-const ITEMS_AMOUNT = 3
-const { writeFile } = require('fs/promises')
+
+const seederSaveFolder = join(__dirname, '../', 'database')
+const NUMBER_OF_CARS = 3
 
 const carCategory = new CarCategory({
   id: faker.datatype.uuid(),
@@ -17,7 +18,7 @@ const carCategory = new CarCategory({
 
 const cars = []
 const customers = []
-for(let i = 0; i < ITEMS_AMOUNT; i++){
+for(let i = 0; i < NUMBER_OF_CARS; i++){
   const car = new Car({
     id: faker.datatype.uuid(),
     name: faker.vehicle.vehicle(),
@@ -35,7 +36,7 @@ for(let i = 0; i < ITEMS_AMOUNT; i++){
   })
   customers.push(customer)
 }
-const write = (filename, data) => writeFile(join(seederBaseFolder, filename), JSON.stringify(data))
+const write = (filename, data) => writeFile(join(seederSaveFolder, filename), JSON.stringify(data))
 ;(
   async() => {
     await write('cars.json', cars)
