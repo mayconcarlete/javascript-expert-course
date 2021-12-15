@@ -20,3 +20,11 @@ jobs:
                   print(platform.system())
                   print(platform.release())
               shell: python
+    run-windows-command:
+        runs-on: windows-latest
+        steps:
+          - name: Directory Power Shell
+            run: Get-Location
+          - name: Directory Bash
+            run: pwd
+            shell: bash
