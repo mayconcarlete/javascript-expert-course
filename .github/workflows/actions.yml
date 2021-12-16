@@ -14,7 +14,14 @@ jobs:
           - name: Test Ls and PWD
             run: |
                 pwd
-                ls
+                ls -a
+                echo GITHUB_SHA:
+                echo $GITHUB_SHA
+                echo GITHUB_REPOSITORY:
+                echo $GITHUB_REPOSITORY
+                echo GITHUB_WORKSPACE:
+                echo $GITHUB_WORKSPACE
+                echo ${{github}}
           - name: Checkout
             uses: actions/checkout@v1
           - name: Ls After Checkout
