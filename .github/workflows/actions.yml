@@ -11,3 +11,7 @@ jobs:
                 who-to-greet: Maycon
           - name: Run Greeting Time
             run: echo "${{ steps.greet.outputs.time }}"
+          - name: Test Ls and PWD
+            run: |
+                pwd
+                ls
