@@ -4,7 +4,7 @@
   "description": "",
   "main": "teste.js",
   "scripts": {
-    "test": "npx mocha -w --parallel /home/maycon/dev/pessoal/javascript-expert-course/1-tests/class-04-e2e/src/*.test.js",
+    "test": "npx mocha -w --parallel **/**/*.test.js",
     "nyc:cov": "npx nyc npx mocha --parallel /home/maycon/dev/pessoal/javascript-expert-course/1-tests/class-04-e2e/src/*.test.js"
   },
   "repository": {
