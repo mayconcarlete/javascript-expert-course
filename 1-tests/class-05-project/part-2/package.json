@@ -8,7 +8,7 @@
   },
   "scripts": {
     "seed": "node ./seed",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx nyx npx mocha --parallel /home/maycon/dev/pessoal/javascript-expert-course/1-tests/class-05-project/part-2/tests/unit-tests/car-service.js"
   },
   "keywords": [],
   "author": "",

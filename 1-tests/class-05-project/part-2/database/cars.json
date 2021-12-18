@@ -1,1 +1,23 @@
-[{"id":"ad56b5ce-eb19-414a-aad0-9d92cff3c0ac","name":"Toyota Alpine","releaseYear":2021,"available":true,"gasAvailable":true},{"id":"ba69df91-47c7-4bfb-8021-691d0978e045","name":"Toyota Beetle","releaseYear":2021,"available":true,"gasAvailable":true},{"id":"ed1ae6d7-5093-47eb-b24c-a878f676bed2","name":"Lamborghini Aventador","releaseYear":2021,"available":true,"gasAvailable":true}]
+[
+  {
+    "id": "0a450489-0ac6-426f-bd4a-7a881bd5effe",
+    "name": "Nissan XTS",
+    "releaseYear": 2021,
+    "available": true,
+    "gasAvailable": true
+  },
+  {
+    "id": "ca9c0443-dcab-4be1-b808-f2e5adb9e503",
+    "name": "Mini CTS",
+    "releaseYear": 2021,
+    "available": true,
+    "gasAvailable": true
+  },
+  {
+    "id": "9c69b80b-151c-42d2-93ab-58a00dfb7613",
+    "name": "Smart Taurus",
+    "releaseYear": 2021,
+    "available": true,
+    "gasAvailable": true
+  }
+]

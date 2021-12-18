@@ -5,7 +5,7 @@
   "main": "teste.js",
   "scripts": {
     "test": "npx mocha -w --parallel **/**/*.test.js",
-    "nyc:cov": "npx nyc npx mocha --parallel /home/maycon/dev/pessoal/javascript-expert-course/1-tests/class-04-e2e/src/*.test.js"
+    "nyc:cov": "npx nyc npx mocha -w --parallel /home/maycon/dev/pessoal/javascript-expert-course/1-tests/class-05-project/part-2/tests/unit-tests/car-service.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,9 @@
     "supertest": "^6.1.6"
   },
   "dependencies": {
+    "chai": "^4.3.4",
     "email-validator": "^2.0.4",
+    "faker": "^5.5.3",
     "validator": "^13.7.0"
   }
 }
