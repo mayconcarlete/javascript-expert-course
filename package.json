@@ -5,7 +5,7 @@
   "main": "teste.js",
   "scripts": {
     "test": "npx mocha -w --parallel **/**/*.test.js",
-    "nyc:cov": "npx nyc npx mocha -w --parallel /home/maycon/dev/pessoal/javascript-expert-course/1-tests/class-05-project/part-2/tests/unit-tests/car-service.js"
+    "nyc:cov": "npx nyc npx mocha -w --parallel /home/maycon/dev/pessoal/javascript-expert-course/1-tests/class-05-project/part-3/tests/unit-tests/car-service.js"
   },
   "repository": {
     "type": "git",

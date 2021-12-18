@@ -1,6 +1,6 @@
 const sinon = require('sinon')
 const { describe, it, before, beforeEach, afterEach } = require('mocha')
-const CarService = require('../../services/car-service')
+const CarService = require('./../../services/car-service')
 const {join} = require('path')
 const carsDatabase = join(__dirname, './../../database', 'cars.json')
 const { expect } = require('chai')
@@ -67,6 +67,18 @@ describe('CarService Suit Tests', () =>{
     const expected = car
     expect(carService.chooseRandomCar.calledOnce).to.be.ok
     expect(carService.carRepository.find.calledWithExactly(car.id))
+    expect(result).to.be.deep.equal(expected)
+  })
+
+  it('given a carCategory, customer and numberOfDays ir should calculate final amount in real', () => {
+    const customer = Object.create(mocks.validCustomer)
+    customer.age = 50
+    const carCategory = Object.assign({}, mocks.validCarCateogry)
+    carCategory.price = 37.6
+    const numberOfDays = 5
+    const expected = carService.currencyFormat.format(244.40)
+
+    const result = carService.calculateFinalPrice(customer, carCategory, numberOfDays)
     expect(result).to.be.deep.equal(expected)
   })
 })
