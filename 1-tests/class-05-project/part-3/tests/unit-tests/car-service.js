@@ -4,6 +4,7 @@ const CarService = require('./../../services/car-service')
 const {join} = require('path')
 const carsDatabase = join(__dirname, './../../database', 'cars.json')
 const { expect } = require('chai')
+const Transaction = require('./../../src/entitites/transaction')
 const mocks = {
   validCarCateogry: require('../mocks/valid-category.json'),
   validCar: require('../mocks/valid-car.json'),
@@ -73,12 +74,46 @@ describe('CarService Suit Tests', () =>{
   it('given a carCategory, customer and numberOfDays ir should calculate final amount in real', () => {
     const customer = Object.create(mocks.validCustomer)
     customer.age = 50
-    const carCategory = Object.assign({}, mocks.validCarCateogry)
+    const carCategory = Object.create(mocks.validCarCateogry)
     carCategory.price = 37.6
     const numberOfDays = 5
+    sandBox.stub(
+      carService,
+      'taxBasedOnAge'
+    ).get(() => [{from: 40, to: 50, then: 1.3}])
     const expected = carService.currencyFormat.format(244.40)
 
     const result = carService.calculateFinalPrice(customer, carCategory, numberOfDays)
+    expect(result).to.be.deep.equal(expected)
+  })
+
+  it('given a customer and a car ir should return a transaction receipt', async() =>{
+    const car = mocks.validCar
+    const carCategory = {
+      ...mocks.carCategory,
+      price: 37.6,
+      carIds: [car.id]
+    }
+    const customer = Object.create(mocks.validCustomer)
+    customer.age = 20
+    const numberOfDays = 5
+    const dueDate = '10 de novembro de 2020'
+    const now = new Date(2020, 10, 5)
+    sandBox.useFakeTimers(now.getTime())
+
+    const expectedAmount = carService.currencyFormat.format(206.80)
+
+    const result = await carService.rent(
+      customer, carCategory, numberOfDays
+    )
+
+    const expected = new Transaction({
+      customer,
+      car,
+      dueDate,
+      amount: expectedAmount
+    })
+
     expect(result).to.be.deep.equal(expected)
   })
 })

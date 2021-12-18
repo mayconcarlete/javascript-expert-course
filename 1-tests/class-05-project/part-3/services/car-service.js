@@ -1,4 +1,5 @@
 const BaseRepository = require('../repository/base/base')
+const Transaction = require('../src/entitites/transaction')
 const Tax = require('./../src/entitites/tax')
 
 class CarService{
@@ -36,6 +37,21 @@ class CarService{
     const formattedPrice = this.currencyFormat.format(finalPrice)
 
     return formattedPrice
+  }
+  async rent(customer, carCategory, numberOfDays){
+    const car = await this.getAvailableCar(carCategory)
+    const finalPrice = await this.calculateFinalPrice(customer, carCategory, numberOfDays)
+    const today = new Date()
+    today.setDate(today.getDate() + numberOfDays)
+    const options = {year:'numeric', month: 'long', day: 'numeric'}
+    const dueDate = today.toLocaleDateString('pt-br', options)
+    const transaction = new Transaction({
+      customer,
+      car,
+      amount: finalPrice,
+      dueDate
+    })
+    return transaction
   }
 }
 
