@@ -1,0 +1,19 @@
+{
+  "name": "part-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "seed": "node ./seed",
+    "test": "npx nyx npx mocha --parallel /home/maycon/dev/pessoal/javascript-expert-course/1-tests/class-05-project/part-2/tests/unit-tests/car-service.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "faker": "^5.5.3"
+  }
+}

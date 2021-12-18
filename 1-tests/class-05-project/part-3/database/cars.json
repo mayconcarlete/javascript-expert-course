@@ -1,0 +1,23 @@
+[
+  {
+    "id": "0a450489-0ac6-426f-bd4a-7a881bd5effe",
+    "name": "Nissan XTS",
+    "releaseYear": 2021,
+    "available": true,
+    "gasAvailable": true
+  },
+  {
+    "id": "ca9c0443-dcab-4be1-b808-f2e5adb9e503",
+    "name": "Mini CTS",
+    "releaseYear": 2021,
+    "available": true,
+    "gasAvailable": true
+  },
+  {
+    "id": "9c69b80b-151c-42d2-93ab-58a00dfb7613",
+    "name": "Smart Taurus",
+    "releaseYear": 2021,
+    "available": true,
+    "gasAvailable": true
+  }
+]
