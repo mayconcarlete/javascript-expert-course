@@ -13,22 +13,27 @@ const mocks = {
 describe('CarService Suit Tests', () =>{
   let carService = {}
   let sandBox = {}
+
   before(()=> {
     carService = new CarService({
       cars: carsDatabase
     })
   })
+
   beforeEach(() => {
     sandBox = sinon.createSandbox()
   })
+
   afterEach(() => {
     sandBox.restore()
   })
+
   it('should retrieve a random position from an array', () => {
     const data = [0,1,2,3,4]
     const result = carService.getRandomPositionFromArray(data)
     expect(result).to.be.lte(data.length).and.be.gte(0)
   })
+
   it('should choose the first id from carIds in carCategory', () => {
     const carCategory = mocks.validCarCateogry
     const carIndex = 0
@@ -36,11 +41,14 @@ describe('CarService Suit Tests', () =>{
       carService,
       carService.getRandomPositionFromArray.name
     ).returns(carIndex)
+
     const result = carService.chooseRandomCar(carCategory)
+
     const expected = carCategory.carIds[carIndex]
     expect(carService.getRandomPositionFromArray.calledOnce).to.be.ok
     expect(result).to.be.equal(expected)
   })
+
   it('given a carCategory it should return an available car', async() => {
     const car = mocks.validCar
     const carCategory = Object.create(mocks.validCarCateogry)
@@ -53,7 +61,9 @@ describe('CarService Suit Tests', () =>{
       carService,
       carService.chooseRandomCar.name
     )
+
     const result = await carService.getAvailableCar(carCategory)
+
     const expected = car
     expect(carService.chooseRandomCar.calledOnce).to.be.ok
     expect(carService.carRepository.find.calledWithExactly(car.id))
