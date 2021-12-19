@@ -13,13 +13,15 @@ const mocks = {
   carCategory: require(carCategoryPath)
 }
 
+const rentCarRoute = async (request, response) => {
+  const carService = new CarService({cars: carPath})
+  const result = await carService.rent(mocks.customers[0], mocks.carCategory[0], 5)
+  response.write(JSON.stringify({car: result}))
+  return response.end()
+}
+
 const routes = {
-  '/rent:post': async (request, response) => {
-    const carService = new CarService({cars: carPath})
-    const result = await carService.rent(mocks.customers[0], mocks.carCategory[0], 5)
-    response.write(JSON.stringify({car: result}))
-    return response.end()
-  }
+  '/rent:post': rentCarRoute
 }
 
 const handler = async(request, response) => {
