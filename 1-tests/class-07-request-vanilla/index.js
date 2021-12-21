@@ -1,7 +1,7 @@
 const https = require('https')
 
 const url = 'https://swapi.dev/api/planets/1/'
-const url2 = 'https://swapi.dev/api/people/12ss/'
+const url2 = 'https://swapi.dev/api/people/1/'
 ;
 // (async() => {
 //   const response = await https.get(url2, response => {
@@ -19,6 +19,13 @@ const makeRequest = () => {
   })
 }
 
-makeRequest()
-  .then(console.log)
-  .catch(console.log)
+async function getStarWars(){
+  const response = await makeRequest()
+  return response
+}
+(
+  async() => {
+    response = await getStarWars()
+    console.log(response)
+  }
+)()
