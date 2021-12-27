@@ -8,4 +8,4 @@ emitter.on('event1', (...args) => {
   console.log(args)
 })
 
-emitter.emit('event1', 1, 2, 3)
+module.exports = emitter
