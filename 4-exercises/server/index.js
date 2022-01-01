@@ -8,6 +8,11 @@ const routerPaths = {
     response.end(JSON.stringify({
       data: 'Hello World!'
     }));
+  },
+  default: (request, response) => {
+    response.end(JSON.stringify({
+      data: 'Hello default!'
+    }));
   }
 }
 
@@ -20,7 +25,8 @@ server.on('request', (request, res) => {
   console.log('Looking for: ', path)
   res.writeHead(200, { 'Content-Type': 'application/json' });
   const getFunctionRoute = routerPaths[path]
-  getFunctionRoute(request, res)
+  // routerPaths.default(request, res)
+  routerPaths['/maycon:get'](request, res)
 });
 
 server.listen(3000);
