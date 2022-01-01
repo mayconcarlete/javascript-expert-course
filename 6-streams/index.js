@@ -9,26 +9,26 @@
 
 // stdin.pipe(stdout)
 
-const http = require( 'http')
+// const http = require( 'http')
 const { readFileSync, createReadStream } = require( 'fs')
-const {join} = require( 'path')
-// node -e "process.stdout.write(crypto.randomBytes(1e9))" > big.file
+// const {join} = require( 'path')
+// // node -e "process.stdout.write(crypto.randomBytes(1e9))" > big.file
 
-const pathFile = join(__dirname, 'big.file')
+// const pathFile = join(__dirname, 'big.file')
 
-// segundo
+// // segundo
 
-http.createServer((req, res) => {
-  // const file = readFileSync(pathFile)
-  // res.write(file)
-  // res.end()
-  createReadStream(pathFile)
-  .pipe(res)
-}).listen(3000, () => console.log('Running at 3000'))
+// http.createServer((req, res) => {
+//   // const file = readFileSync(pathFile)
+//   // res.write(file)
+//   // res.end()
+//   createReadStream(pathFile)
+//   .pipe(res)
+// }).listen(3000, () => console.log('Running at 3000'))
 
 
 
-// // terceiro
-// // node -e "process.stdin.pipe(require('net').connect(1338))"
-// const net = require('net')
-// net.createServer(socket => socket.pipe(process.stdout)).listen(1338)
+// terceiro
+// node -e "process.stdin.pipe(require('net').connect(1338))"
+const net = require('net')
+net.createServer(socket => socket.pipe(process.stdout)).listen(1338)
