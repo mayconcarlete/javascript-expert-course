@@ -28,6 +28,7 @@
     "chai": "^4.3.4",
     "email-validator": "^2.0.4",
     "faker": "^5.5.3",
+    "fastify": "^3.25.3",
     "validator": "^13.7.0"
   }
 }
