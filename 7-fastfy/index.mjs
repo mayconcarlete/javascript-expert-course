@@ -9,6 +9,29 @@ server.get('/', async(request, reply) => {
   }
 })
 
+const opts = {
+  schema: {
+    body: {
+      type:'object',
+      required:['requiredKey'],
+      properties:{
+        requiredKey: {
+          type: 'array',
+          maxItems: 3,
+          items:{type: 'integer'}
+        },
+      }
+    }
+  }
+}
+
+server.post('/login', opts,async(request, reply) => {
+  reply.code(203)
+  return {
+    message: request.body.name
+  }
+})
+
 const start = async() => {
   try{
     server.listen(3000)
