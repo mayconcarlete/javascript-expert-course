@@ -1,0 +1,42 @@
+{
+    "cells": [
+        {
+            "language": "typescript",
+            "source": [
+                "import fastify from 'fastify'\n\nconst server = fastify()\n\nserver.get('/', async(req, reply) => {\n  return {\n    message: 'hello world 4k'\n  }\n})\n\nserver.listen(4000)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "\u001b[32m'http://127.0.0.1:4000'\u001b[39m"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "import axios from 'axios'\n\naxios\n  .get('localhost:4000').then(console.log)\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "TypeError",
+                                "message": "Cannot read properties of null (reading 'replace')",
+                                "stack": "    at dispatchHttpRequest (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/adapters/http.js:136:74)\n    at new Promise (<anonymous>)\n    at httpAdapter (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/adapters/http.js:48:10)\n    at dispatchRequest (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/core/dispatchRequest.js:58:10)\n    at Axios.request (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/core/Axios.js:108:15)\n    at Axios.<computed> [as get] (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/core/Axios.js:129:17)\n    at Function.wrap [as get] (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/helpers/bind.js:9:15)\n    at <Cell 2> [3, 5]\n    at <Cell 2> [6, 46]\n    at Script.runInContext (node:vm:139:12)"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
