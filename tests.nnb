@@ -21,17 +21,35 @@
         {
             "language": "typescript",
             "source": [
-                "import axios from 'axios'\n\naxios\n  .get('localhost:4000').then(console.log)\n"
+                "interface Get {\n  get<T = any>():Promise<T>\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "import axios from 'axios'\n\ntype Output = {\n  name: string\n  num: number\n}\n\nclass Http implements Get{\n  async get<T = any>(): Promise<T> {\n    const result = await axios.get('http://localhost:4000')\n    return await result.data\n  }\n}\n;\n(\n  async() => {\n    const http = new Http()\n    const response = await http.get<Output>()\n    console.log(response.name)\n    console.log(response.num)\n  }\n)()\n"
             ],
             "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "undefined",
+                                ""
+                            ]
+                        }
+                    ]
+                },
                 {
                     "items": [
                         {
                             "mime": "application/vnd.code.notebook.error",
                             "value": {
                                 "name": "TypeError",
-                                "message": "Cannot read properties of null (reading 'replace')",
-                                "stack": "    at dispatchHttpRequest (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/adapters/http.js:136:74)\n    at new Promise (<anonymous>)\n    at httpAdapter (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/adapters/http.js:48:10)\n    at dispatchRequest (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/core/dispatchRequest.js:58:10)\n    at Axios.request (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/core/Axios.js:108:15)\n    at Axios.<computed> [as get] (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/core/Axios.js:129:17)\n    at Function.wrap [as get] (/home/maycon/dev/pessoal/javascript-expert-course/node_modules/axios/lib/helpers/bind.js:9:15)\n    at <Cell 2> [3, 5]\n    at <Cell 2> [6, 46]\n    at Script.runInContext (node:vm:139:12)"
+                                "message": "Cannot read properties of undefined (reading 'length')",
+                                "stack": "    at <Cell 3> [20, 11]\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async C (/home/maycon/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:113337)\n    at async t.execCode (/home/maycon/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:114306)"
                             }
                         }
                     ]
