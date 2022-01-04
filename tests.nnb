@@ -44,6 +44,28 @@
                     ]
                 }
             ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// generators\n\nfunction* generateSequence(){\n  yield 1\n  yield 2\n  return 3\n}\nconst generator = generateSequence()\nlet isDone = false\nwhile(isDone !== true){\n  const valor = generator.next()\n  console.log(valor)\n  if(valor.done === true) isDone = true\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ value: 1, done: false }",
+                                "{ value: 2, done: false }",
+                                "{ value: 3, done: false }",
+                                "{ value: undefined, done: true }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

@@ -55,3 +55,7 @@ async function* systemInfo(){
     }
   }
 )()
+
+// fato interessante sobre os generators, caso voce coloque um return dentro de uma função generator, o ultimo objeto
+// chamado pelo next sera o return e o done: true eg: {value: foo, done: true}
+// quando eu chamava só pelo next e sem nenhum return na função o value ficava sempre undefined {value: undefined, done: true}
