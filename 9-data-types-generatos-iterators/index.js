@@ -23,3 +23,35 @@ assert.deepStrictEqual(generator.next(), {value: undefined, done: true})
 assert.deepStrictEqual(Array.from(main()), ['Hello', '-', 'World', 100])
 // using rest spread operator
 assert.deepStrictEqual([...main()], ['Hello', '-', 'World', 100])
+
+
+// async iterators
+const {readFile, stat, readdir} = require('fs/promises')
+function* promisified(){
+    yield readFile(__filename)
+    yield Promise.resolve('Hey dude')
+  }
+
+// Promise.all([...promisified()]).then(result => console.log(result))
+// ;
+// (
+//   async() => {
+//     for await (const result of promisified()){
+//         console.log(result.toString())
+//     }
+//   }
+// )()
+
+async function* systemInfo(){
+  const file = await readFile(__filename)
+  yield { file: file.toString() }
+}
+
+;
+(
+  async() => {
+    for await (const result of systemInfo()){
+        console.log(result.toString())
+    }
+  }
+)()
