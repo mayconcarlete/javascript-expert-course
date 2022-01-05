@@ -1,0 +1,12 @@
+npm i -g serverless
+sls
+escolher o node.js - starter
+
+#deploy
+sls deploy
+
+# chamar a função na aws
+sls invoke -f hello
+
+# chamar a função localmente
+sls invoke local -f hello
