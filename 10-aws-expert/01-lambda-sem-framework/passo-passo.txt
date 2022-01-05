@@ -1,0 +1,28 @@
+1 - passo é criar arquivo[trust-policy.json] com as politicas de segurança(o que ela pode acessar, quais serviços ela vai acessar)
+2 - criar a role de seguramça na AWS
+
+aws iam create-role \
+  --role-name lambda-exemplo \
+  --assume-role-policy-document file://trust-policy.json \
+  | tee logs/role.log
+
+3- zipar o arquivo e entao subir na aws
+zip -r nomedozip.zip arquivo
+
+4 - enviar
+aws lambda create-function \
+  --function-name hello-cli \
+  --zip-file fileb://function.zip \
+  --handler index.handler \
+  --runtime nodejs14.x \
+  --role arn:aws:iam::038213797816:role/lambda-exemplo \
+  | tee logs/lambda-create.log
+
+5 - podemos invokar a lambda para testar
+aws lambda invoke \
+  --function-name hello-cli \
+  --log-type Tail \
+  logs/lambda-exec.log
+
+6 - deletar a function
+aws lambda delete-function --function-name=nome

@@ -4,3 +4,4 @@ coverage
 .nyc_output
 6-streams/big.file
 **/credentials.csv
+10-aws-expert/test.txt
