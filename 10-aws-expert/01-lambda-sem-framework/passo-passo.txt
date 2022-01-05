@@ -26,3 +26,14 @@ aws lambda invoke \
 
 6 - deletar a function
 aws lambda delete-function --function-name=nome
+
+7- atualizar uma lambda
+aws lambda update-function-code \
+  --zip-file fileb://function.zip \
+  --function-name hello-cli \
+  --publish \
+  | tee logs/lambda-update.log
+
+8 - deletar a role
+aws iam delete-role \
+  --role-name lambda-exemplo
