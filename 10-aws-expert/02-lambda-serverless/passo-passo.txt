@@ -9,4 +9,5 @@ sls deploy
 sls invoke -f hello
 
 # chamar a função localmente
-sls invoke local -f hello
+sls invoke local -f hello -t
+(esse -t é de --tail)
