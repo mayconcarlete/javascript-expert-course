@@ -1,5 +1,6 @@
 "use strict";
 const {promises: { readFile } } = require('fs')
+const axios = require('axios')
 class Handler {
   constructor({rekoSvc}){
     this.rekoSvc = rekoSvc
@@ -12,9 +13,17 @@ class Handler {
     }).promise()
     return result
   }
+  async getImageBuffer(imgUrl){
+    const response = await axios.get(imgUrl, {
+      responseType: 'arraybuffer'
+    })
+    const buffer = Buffer.from(response.data, 'base64')
+    return buffer
+  }
   async main(event){
     try{
-      const imgBuffer = await readFile('dog.jpg')
+      const { imgUrl } = event.queryStringParameters
+      const imgBuffer = await this.getImageBuffer(imgUrl)
       const response = await this.detectImages(imgBuffer)
       return {
         statusCode: 200,
@@ -32,7 +41,8 @@ class Handler {
     }
   }
 }
-const aws = require('aws-sdk')
+const aws = require('aws-sdk');
+const { AlexaForBusiness } = require('aws-sdk');
 const reko = new aws.Rekognition()
 const handler =  new Handler({
   rekoSvc:reko
