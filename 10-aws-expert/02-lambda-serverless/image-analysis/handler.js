@@ -10,15 +10,15 @@ class Handler {
         Bytes: buffer
       }
     }).promise()
-    console.log(result)
+    return result
   }
   async main(event){
     try{
       const imgBuffer = await readFile('dog.jpg')
-      await this.detectImages(imgBuffer)
+      const response = await this.detectImages(imgBuffer)
       return {
         statusCode: 200,
-        body: 'ok'
+        body: response
       }
     }catch(error){
       console.log('Error ****', error.stack)
