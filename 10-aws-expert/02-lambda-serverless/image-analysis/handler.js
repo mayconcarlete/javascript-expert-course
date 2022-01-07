@@ -24,7 +24,10 @@ class Handler {
       console.log('Error ****', error.stack)
       return {
         statusCode: 500,
-        body: 'Internal Server Error'
+        body: {
+          error,
+          stack: error.stack
+        }
       }
     }
   }
