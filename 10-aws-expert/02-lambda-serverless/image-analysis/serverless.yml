@@ -18,3 +18,4 @@ functions:
       - httpApi:
           path: /analyse
           method: get
+          cors: true
