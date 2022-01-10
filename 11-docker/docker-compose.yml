@@ -5,10 +5,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      # args:
-      #   - NAME=CARLETEFROMARGS
+      args:
+        - NAME=CARLETEFROMARGS
     environment:
       - NAME=CARLETAO
-    command: '/bin/sh -c "echo $NAME"'
-    env_file:
-      - .env
+    command: 'npm run start'
+# O que está acontecendo com as variaveis de ambiente?
+# Quando voce quer usar uma variavel no build da imagem do dockerfile, voce precisa passar
+# esse valor através do campo args em build
+# O campo environment nesse caso injeta os valores somente quando o container está rodando
+# seria mais ou menos o seguinte, pro build use args e para rodar o container use o environment
