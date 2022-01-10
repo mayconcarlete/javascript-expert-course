@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # args:
+      #   - NAME=CARLETEFROMARGS
+    environment:
+      - NAME=CARLETAO
+    command: '/bin/sh -c "echo $NAME"'
+    env_file:
+      - .env
