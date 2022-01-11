@@ -10,8 +10,19 @@ services:
     environment:
       - NAME=CARLETAO
     command: 'npm run start'
+    ports:
+      - 3000:3000
 # O que está acontecendo com as variaveis de ambiente?
 # Quando voce quer usar uma variavel no build da imagem do dockerfile, voce precisa passar
 # esse valor através do campo args em build
 # O campo environment nesse caso injeta os valores somente quando o container está rodando
 # seria mais ou menos o seguinte, pro build use args e para rodar o container use o environment
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - app
+    ports:
+      - 80:80
