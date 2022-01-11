@@ -63,7 +63,14 @@
         {
             "language": "typescript",
             "source": [
-                "namespace SignUp {\n  export interface Controller<T = any> {\n    handle(param:T):Promise<Output>\n  }\n\n  export type Output = {\n    id: string\n    name: string\n    email: string\n  }\n\n  export type Input = Omit<Output, 'id'>\n}\n\n\n\nclass SignUp implements SignUp.Controller {\n  async handle(param: SignUp.Input): Promise<SignUp.Output> {\n    return new Promise((resolve, reject) => {\n      resolve({\n        email:'a',\n        id:'a',\n        name:'a'\n      })\n    })\n  }\n}"
+                "\nexport type Output = {\n  id: string\n  name: string\n  email: string\n}\n\nexport type Input = Omit<Output, 'id'>\n\nexport interface Controller<T = any> {\n  handle<Z = any>(param: T):Promise<Z>\n}\n\nclass SignUp implements Controller {\n  async handle<Output>(param: Input): Promise<Output> {\n    const response = {email:'a',id:'a',name:'a'}\n    return new Promise((resolve, reject) => {\n      resolve()\n    })\n  }\n}\nconst signUp = new SignUp()\n;\n(\n  async() => {\n    const response = await signUp.handle({name:`m`, email:`c`})\n    console.log(response)\n  }\n)()"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
             ],
             "outputs": []
         }
