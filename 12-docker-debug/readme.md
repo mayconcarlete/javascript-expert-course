@@ -9,4 +9,23 @@
 # podemos inclusive dar exec nos parametros de uma funcao
 # para remover um breakpoint apenas cb("arquivo.js", "numero da linha")
 # o comando breakpoints mostra todos os breakpoints
-# podemos adicionar o waths com o comando watch("variavel") ou incluir condicional watch  ("variavel > 2") aspas deve englobar tudo
+# podemos adicionar o waths com o comando watch("variavel") ou incluir condicional watch  ("variavel > 2") obs: aspas deve englobar tudo(precisamos tbm adicionar um breakpoint para o watch funcionar)
+# agora rodar node --inspect server.js para usar no navegador A diferença é que para rodar no shell eu nao preciso rodar com a flag --inspect, apenas inspect
+na pasta .vscode/launch.json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Docker: Attach to Node",
+      "type": "node",
+      "request": "attach",
+      "program": "${workspaceFolder/12-docker-debug/server.js}" # path do arquivo
+    }
+  ]
+}
+
+# para rodar no docker e chrome
+# Lembrar de exportar a porta tanto da aplicacao ex:3000 quanto do debugger 9229
+
+# Para rodar no docker e no debugger do vscode
+# criar um launch.json

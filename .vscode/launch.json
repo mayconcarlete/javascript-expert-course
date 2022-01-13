@@ -8,8 +8,8 @@
       "restart": true,
       "port": 9229,
       "address": "localhost",
-      "localRoot": "${workspaceFolder}",
-      "remoteRoot": "/usr/src/app",
+      "localRoot": "${workspaceFolder}/12-docker-debug",
+      "remoteRoot": "/home/app",
       "protocol": "inspector"
     }
   ]
