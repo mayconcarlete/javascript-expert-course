@@ -29,3 +29,24 @@ na pasta .vscode/launch.json
 
 # Para rodar no docker e no debugger do vscode
 # criar um launch.json
+# apagar tudo que tem dentro de configurations
+# dar um ctrl espaco e escolher o docker
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Docker: Attach to Node",
+      "type": "node",
+      "request": "attach",
+      "restart": true,
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}/12-docker-debug",
+      "remoteRoot": "/home/app",
+      "protocol": "inspector"
+    }
+  ]
+}
+
+# localRoot é onde esta o código que voce quer debugar na sua maquina (num projeto normal voce pode colocar só . ou ${workspaceFolder})
+# remoteRoot é o diretorio no container onde esta o codigo
