@@ -6,4 +6,7 @@
 # digite r - para restartar a aplicação
 # para setar um break point em código sem usar o debugger basta adicionar sb(numero_da_linha) (nao esquecer de digitar C para continuar  depois de usar o sb)
 # step para ir avançando step by step
-# podemos inclusive dar exec nos parametros de uma uncao
+# podemos inclusive dar exec nos parametros de uma funcao
+# para remover um breakpoint apenas cb("arquivo.js", "numero da linha")
+# o comando breakpoints mostra todos os breakpoints
+# podemos adicionar o waths com o comando watch("variavel") ou incluir condicional watch  ("variavel > 2") aspas deve englobar tudo
