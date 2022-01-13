@@ -50,3 +50,22 @@ na pasta .vscode/launch.json
 
 # localRoot é onde esta o código que voce quer debugar na sua maquina (num projeto normal voce pode colocar só . ou ${workspaceFolder})
 # remoteRoot é o diretorio no container onde esta o codigo
+
+# typescript
+# apontar para onde esta o arquivo .map
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Docker: Attach to Node",
+      "type": "node",
+      "request": "attach",
+      "restart": true,
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}/12-docker-debug/dist",
+      "remoteRoot": "/home/app",
+      "protocol": "inspector"
+    }
+  ]
+}
