@@ -69,3 +69,5 @@ na pasta .vscode/launch.json
     }
   ]
 }
+
+# Atenç~ao lembrar de sempre buildar a pasta dist LOCAL sua, pois o build do docker-compose só vai atualizar a pasta do docker
