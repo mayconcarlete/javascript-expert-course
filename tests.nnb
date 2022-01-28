@@ -70,7 +70,160 @@
         {
             "language": "typescript",
             "source": [
+                "const dataAgora = new Date()\nconst value = '2021-01-25T00:30:05.933Z'\nconst diferenca = dataAgora.getTime() - new Date(value).getTime()\nconst horas = diferenca / (1000 * 3600)\nconsole.log(horas)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "24.10573722222222",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const valor = new Date('2021-01-25T00:30:05.933Z')\nconsole.log(valor)\nconsole.log(valor instanceof Date && !isNaN(valor))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "2021-01-25T00:30:05.933Z",
+                                "true",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const firstDate = new Date()\nfirstDate.setDate(firstDate.getDate() - 1)\nconst a = firstDate.toISOString()\nconsole.log(a)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "2022-01-25T21:28:33.735Z",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
                 ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const faceAttemptsDate = new Date('2021-01-25T00:30:05.933Z')\nconst dd1 = faceAttemptsDate.getTime()\n\nconst timeNow = new Date('2021-01-25T06:30:05.933Z')\nconst dd2 = timeNow.getTime()\nconst  remainTime = (24 - ((dd2 - dd1)/(3600 * 1000)))\nconsole.log('spentTime: ', remainTime)\nconst nextTimeAvailable = timeNow.setTime(timeNow.getTime() + (remainTime * 3600 * 1000))\nconsole.log(new Date(nextTimeAvailable))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "spentTime:  18",
+                                "2021-01-26T00:30:05.933Z",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const date1 = new Date('2022-01-25T00:30:05.933Z').getTime()\nconsole.log(date1)\nconst finalDate = new Date()\n// '2021-01-27T00:30:05.933Z'\nconsole.log(finalDate)\nconst diff = (finalDate.getTime() - date1)/(3600*1000)\nconsole.log(diff)\n\nconsole.log(new Date().getTime())"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "1611534605933",
+                                "1643387001914",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "import moment from 'moment'\n\nconst finalDate = moment(new Date().getTime())\nconst faceAttemptsDate = moment(new Date('2022-01-27T00:30:05.933Z'))\n// const blockedTime = moment(faceAttemptsDate).add(1, 'day').milliseconds();\n\nconsole.log(faceAttemptsDate.valueOf())\nconsole.log(faceAttemptsDate.subtract(1000, 'millisecond'))\n\nconsole.log(new Date(\n  \n))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "1643243405933",
+                                "2022-01-29T17:40:18.729Z",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "libs/model/src/lib/User.js"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// libs/model/src/lib/User.js\n    /**\n     * Add a new date to user.\n     *\n     * @param {Date} date The date to set in faceAttempts.\n     * @return {User} The user\n     */\n     setFaceAttemptsDate(date) {\n      return this.updateAtomic({faceAttemptsDate: date});\n  },\n  /**\n   * Reset the date and the number of attempts of user.\n   *\n   * @return {User} The user\n   */\n  resetFaceAttempts() {\n      return this.updateAtomic({\n          faceAttemptsDate: new Date(),\n          faceAttempts: 0\n      });\n  },\n  "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// Facetec.spec.js\n/* eslint-disable no-unused-expressions */\nrequire('jest-extended');\nconst testHelper = require('../tools/TestHelper');\ntestHelper.prepareTest();\n\nconst Facetec = require('../../tools/Facetec');\nconst sinon = require('sinon');\nconst User = require('@mistplay/model/User');\nconst uuid = require('uuid/v4');\nconst ResponseType = require('../../tools/ResponseType');\nconst Enums = require('../../tools/enums');\nconst FaceVerification = require('../../models/FaceVerification');\n\nconst validFaceUser = new User({uid: uuid(), rid: 'ref'});\nconst invalidFaceUser = new User({uid: uuid(), rid: 'ref'});\nconst duplicateFaceUser = new User({uid: uuid(), rid: 'ref'});\nconst faceMatchUid = uuid();\nconst tooManyAttemptsUser = new User({uid: uuid(), rid: 'ref'});\nconst unluckyUser = new User({uid: uuid(), rid: 'ref'});\nconst firstUser = new User({uid: uuid(), rid: 'ref'});\n// This user has already tried 15 times\nconst maliciousUser = new User({uid: uuid(), rid: 'ref', faceAttempts: 15});\n\n\njest.setTimeout(25000);\ndescribe('Facetec Tests', () => {\n\n    beforeAll(async () => {\n        // save the different users to DynamoDB\n        await Promise.all([\n            validFaceUser.saveAsync(),\n            invalidFaceUser.saveAsync(),\n            duplicateFaceUser.saveAsync(),\n            tooManyAttemptsUser.saveAsync(),\n            unluckyUser.saveAsync(),\n            firstUser.saveAsync(),\n            maliciousUser.saveAsync(),\n\n        ]);\n\n        // Stub some requests to the Facetec server.\n        sinon.stub(Facetec.request, 'post').callsFake(({url, json}) => {\n            if (url == 'http://facetec.mistplay.com/enrollment-3d') {\n                if (json.externalDatabaseRefID?.includes(invalidFaceUser.get('uid'))) {\n                    // return a failure to pass security checks if it's the user with invalid face\n                    return {\n                        // error implies there was a problem processing the entry\n                        // not that it didn't pass the security checks\n                        error: false,\n                        faceScanSecurityChecks: {\n                            faceScanLivenessCheckSucceeded: false,\n                            auditTrailVerificationCheckSucceeded: true,\n                            replayCheckSucceeded: true,\n                            sessionTokenCheckSucceeded: true,\n                        },\n                        scanResultBlob: 'scanResultBlob'\n                    };\n                }\n                if (json.externalDatabaseRefID?.includes(unluckyUser.get('uid'))) {\n                    // return an error, unrelated to security checks\n                    return {\n                        // error implies there was a problem processing the entry\n                        // not that it didn't pass the security checks\n                        error: true,\n                        errorMessage: 'Server dead',\n                    };\n                }\n                // otherwise return success\n                return {\n                    error: false,\n                    faceScanSecurityChecks: {\n                        faceScanLivenessCheckSucceeded: true,\n                        auditTrailVerificationCheckSucceeded: true,\n                        replayCheckSucceeded: true,\n                        sessionTokenCheckSucceeded: true,\n                    },\n                    scanResultBlob: 'scanResultBlob'\n                };\n            }\n            if (url == 'http://facetec.mistplay.com/3d-db/search') {\n                if (json.externalDatabaseRefID?.includes(duplicateFaceUser.get('uid'))) {\n                    // this user has face matches\n                    return {\n                        error: false,\n                        success: true,\n                        results: [\n                            {\n                                identifier: `${faceMatchUid}_${Date.now() - 10_000}`,\n                                matchLevel: 5\n                            },\n                            {\n                                // stub also matches himself from a previous attempt\n                                identifier: `${duplicateFaceUser.get('uid')}_${Date.now() - 30_000}`,\n                                matchLevel: 10\n                            }\n                        ]\n                    };\n                }\n                if (json.externalDatabaseRefID?.includes(firstUser.get('uid'))) {\n                    // this user is the first user to query this instance of the 3d-db\n                    // so the 'Mistplay' group doesn't exist yet\n                    return {\n                        errorMessage:\n                            'Tried to search a groupName when that groupName does not exist. groupName: Mistplay. Try adding a 3D FaceMap by calling /3d-db/enroll first',\n                        success: false,\n                        wasProcessed: true,\n                        error: true,\n                    };\n                }\n                // other users don't have face matches\n                return {\n                    error: false,\n                    success: true,\n                    results: []\n                };\n            }\n            if (url == 'http://facetec.mistplay.com/3d-db/enroll') {\n                return {success: true};\n            }\n        });\n    });\n\n    afterAll(async () => {\n        sinon.restore();\n    });\n\n    describe('Should prompt face verification tests', () => {\n\n        it('shouldPromptFaceVerification() with null parameters should return false', () => {\n            expect(Facetec.shouldPromptFaceVerification()).toBe(false);\n        });\n\n        it('shouldPromptFaceVerification() with disabled feature should return false', () => {\n            expect(Facetec.shouldPromptFaceVerification(validFaceUser, {})).toBe(false);\n        });\n\n        it('shouldPromptFaceVerification() for feature without face_on should return false', () => {\n            expect(Facetec.shouldPromptFaceVerification(validFaceUser, {\n                is_enabled: true,\n                params: {face_on: false}\n            })).toBe(false);\n        });\n\n        it('shouldPromptFaceVerification() for feature with face_on should return true', () => {\n            expect(Facetec.shouldPromptFaceVerification(validFaceUser, {\n                is_enabled: true,\n                params: {face_on: true}\n            })).toBe(true);\n        });\n\n        it('shouldPromptFaceVerification() for clean user with sketchy_only one should return false', () => {\n            expect(Facetec.shouldPromptFaceVerification(validFaceUser, {\n                is_enabled: true,\n                params: {face_on: true, sketchy_only: true}\n            })).toBe(false);\n        });\n\n        it('shouldPromptFaceVerification() for sketchy user with sketchy_only one should return true', () => {\n            validFaceUser.set({sketchy: true});\n            expect(Facetec.shouldPromptFaceVerification(validFaceUser, {\n                is_enabled: true,\n                params: {face_on: true, sketchy_only: true}\n            })).toBe(true);\n        });\n\n        it('shouldPromptFaceVerification() for already verified user should return false', () => {\n            validFaceUser.set({faceVerified: true});\n            expect(Facetec.shouldPromptFaceVerification(validFaceUser, {\n                is_enabled: true,\n                params: {face_on: true}\n            })).toBe(false);\n        });\n    });\n\n    describe('Face verification tests', () => {\n\n        it('Should successfully verify a valid user with proven Liveness', async () => {\n            const result = await Facetec.verifyFace(validFaceUser, 'validFaceScan', 'valid', 'valid', 'faceTecUserAgent');\n\n            expect(result.invalidFace).toBeFalsy();\n            expect(result.faceAlreadyExists).toBeFalsy();\n            expect(result.scanResultBlob).toBe('scanResultBlob');\n            expect(result.transactId).toInclude(validFaceUser.get('uid'));\n\n            // check that the user was properly updated\n            const updatedUser = await User.getAsync(validFaceUser.get('uid'));\n            expect(updatedUser.get('faceVerified')).toBeTrue();\n            expect(updatedUser.get('faceVerificationTransactId')).toBe(result.transactId);\n            expect(updatedUser.get('faceAttempts')).toBe(1);\n\n            // check that the Face Verification table was properly updated to record this attempt\n            const [uid, ts] = Facetec.transactIdToUidTs(result.transactId);\n            const verificationAttempt = await FaceVerification.getAsync({uid, ts});\n            expect(verificationAttempt.get('faceScanLivenessCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('auditTrailVerificationCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('replayCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('sessionTokenCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('matches')).toBeFalsy();\n        });\n\n        it('Should not verify a user whose Liveness cannot be proven', async () => {\n            await expect(\n                Facetec.verifyFace(invalidFaceUser, 'invalidFaceScan', 'valid', 'valid', 'faceTecUserAgent')\n            ).rejects.toHaveProperty('code', ResponseType.FacetecInvalidFaceFail.code);\n\n            // check that the user was properly updated\n            const updatedUser = await User.getAsync(invalidFaceUser.get('uid'));\n            expect(updatedUser.get('faceVerified')).toBeFalsy();\n            expect(updatedUser.get('faceVerificationTransactId')).toBeFalsy();\n            expect(updatedUser.get('faceAttempts')).toBe(1);\n\n            // check that the Face Verification table was properly updated to record this attempt\n            const verificationAttempt = (await FaceVerification.query(invalidFaceUser.get('uid')).execAsync()).Items[0];\n            expect(verificationAttempt.get('faceScanLivenessCheckSucceeded')).toBeFalse();\n            expect(verificationAttempt.get('auditTrailVerificationCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('replayCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('sessionTokenCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('matches')).toBeFalsy();\n        });\n\n        it('Should not verify a user with a similarity match to another user and flag him with a sketchy reason', async () => {\n            await expect(\n                Facetec.verifyFace(duplicateFaceUser, 'validFaceScan', 'valid', 'valid', 'faceTecUserAgent')\n            ).rejects.toHaveProperty('code', ResponseType.FaceExistsFail.code);\n\n            // check that the user was properly updated\n            const updatedUser = await User.getAsync(duplicateFaceUser.get('uid'));\n            expect(updatedUser.get('faceVerified')).toBeFalsy();\n            expect(updatedUser.get('faceVerificationTransactId')).toBeFalsy();\n            expect(updatedUser.get('faceAttempts')).toBe(1);\n            expect(updatedUser.get('sketchy')).toBeTrue();\n            expect(updatedUser.get('sr')).toContain(Enums.SketchReason.FACE_ALREADY_EXISTS);\n\n            // check that the Face Verification table was properly updated to record this attempt\n            const verificationAttempt = (await FaceVerification.query(duplicateFaceUser.get('uid')).execAsync()).Items[0];\n            expect(verificationAttempt.get('faceScanLivenessCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('auditTrailVerificationCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('replayCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('sessionTokenCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('matches')).toContain(faceMatchUid);\n        });\n\n        it('Should verify a user who makes too many attempts (>= 5), but flag him as sketchy', async () => {\n            // pass in the latest user for each function call\n            for (let i = 0; i < 5; i++) {\n                await Facetec.verifyFace(await User.getAsync(tooManyAttemptsUser.get('uid')),\n                    'validFaceScan', 'valid', 'valid', 'faceTecUserAgent');\n            }\n\n            // check that the user was properly flagged with a sketchy reason\n            const updatedUser = await User.getAsync(tooManyAttemptsUser.get('uid'));\n            expect(updatedUser.get('faceVerified')).toBeTrue();\n            expect(updatedUser.get('faceVerificationTransactId')).toBeTruthy();\n            expect(updatedUser.get('faceAttempts')).toBe(5);\n            expect(updatedUser.get('sketchy')).toBeTrue();\n            expect(updatedUser.get('sr')).toContain(Enums.SketchReason.MANY_FAILED_FACE_ATTEMPTS);\n\n            // check that the Face Verification table was properly updated to record the attempts\n            const verificationAttempts = (await FaceVerification.query(tooManyAttemptsUser.get('uid')).execAsync()).Items;\n            expect(verificationAttempts).toHaveLength(5);\n            verificationAttempts.forEach(attempt => {\n                expect(attempt.get('faceScanLivenessCheckSucceeded')).toBeTrue();\n                expect(attempt.get('auditTrailVerificationCheckSucceeded')).toBeTrue();\n                expect(attempt.get('replayCheckSucceeded')).toBeTrue();\n                expect(attempt.get('sessionTokenCheckSucceeded')).toBeTrue();\n                expect(attempt.get('matches')).toBeFalsy();\n            });\n        });\n\n        it('Should gracefully handle a failure in one of the Facetec API calls', async () => {\n            await expect(\n                Facetec.verifyFace(unluckyUser, 'validFaceScan', 'valid', 'valid', 'faceTecUserAgent')\n            ).rejects.toHaveProperty('code', ResponseType.FacetecServerScanFail.code);\n\n            const updatedUser = await User.getAsync(unluckyUser.get('uid'));\n\n            // check that the user was properly updated\n            expect(updatedUser.get('faceAttempts')).toBe(1);\n            expect(updatedUser.get('faceVerified')).toBeFalsy();\n        });\n\n        it('Should successfully verify the first user querying the 3d-db instance', async () => {\n            const result = await Facetec.verifyFace(firstUser, 'validFaceScan', 'valid', 'valid', 'faceTecUserAgent');\n\n            expect(result.invalidFace).toBeFalsy();\n            expect(result.faceAlreadyExists).toBeFalsy();\n            expect(result.scanResultBlob).toBe('scanResultBlob');\n            expect(result.transactId).toInclude(firstUser.get('uid'));\n\n            // check that the user was properly updated\n            const updatedUser = await User.getAsync(firstUser.get('uid'));\n            expect(updatedUser.get('faceVerified')).toBeTrue();\n            expect(updatedUser.get('faceVerificationTransactId')).toBe(result.transactId);\n            expect(updatedUser.get('faceAttempts')).toBe(1);\n\n            // check that the Face Verification table was properly updated to record this attempt\n            const [uid, ts] = Facetec.transactIdToUidTs(result.transactId);\n            const verificationAttempt = await FaceVerification.getAsync({uid, ts});\n            expect(verificationAttempt.get('faceScanLivenessCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('auditTrailVerificationCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('replayCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('sessionTokenCheckSucceeded')).toBeTrue();\n            expect(verificationAttempt.get('matches')).toBeFalsy();\n        });\n\n        it('Should not verify a user who makes maliciously many (>= 15) attempts', async () => {\n            const result = await Facetec.verifyFace(maliciousUser, 'validFaceScan', 'valid', 'valid', 'faceTecUserAgent');\n            expect(result.unblockTime).toEqual(expect.any(Number));\n            expect(result.userAttempts).toBe(15);\n        });\n\n        it('Should return a message when a blocked user try to verifyFace their face in a period less than 24 hours', async() => {\n            const blockedUser = new User({uid: uuid(), rid: 'ref', faceAttempts: 15, faceAttemptsDate: new Date()});\n            await blockedUser.saveAsync();\n\n            const result = await Facetec.verifyFace(blockedUser, 'validFaceScan', 'valid', 'valid', 'faceTecUserAgent');\n\n            expect(result.unblockTime).toEqual(expect.any(Number));\n            expect(result.userAttempts).toBe(15);\n        });\n\n        it('Should reset user faceAttempts after a reset period', async() => {\n            const blockedUser = new User({uid: uuid(), rid: 'ref', faceAttempts: 15, faceAttemptsDate: new Date('2022-01-25T00:30:05.933Z')});\n            await blockedUser.saveAsync();\n\n            const result = await Facetec.verifyFace(blockedUser, 'validFaceScan', 'valid', 'valid', 'faceTecUserAgent');\n\n            const updatedUser = await User.getAsync(blockedUser.get('uid'));\n            expect(updatedUser.get('faceAttempts')).toBe(1);\n            const [uid, ts] = Facetec.transactIdToUidTs(result.transactId);\n            const verificationAttempt = await FaceVerification.getAsync({uid, ts});\n            expect(verificationAttempt.get('faceScanLivenessCheckSucceeded')).toBeTrue();\n        });\n    });\n});\n"
             ],
             "outputs": []
         }
