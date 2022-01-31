@@ -1,0 +1,13 @@
+version: '3'
+# podemos usar a linha de comando ao inves de docker-compose se quisermos
+# docker run -d -p 3000:3000 -p 9229:9229 node:15.0.1-alpine
+services:
+  backend:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+      - 9229:9229
+    command: node --inspect=0.0.0.0 index.js

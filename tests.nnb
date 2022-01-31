@@ -21,13 +21,6 @@
         {
             "language": "typescript",
             "source": [
-                ""
-            ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
                 "import axios from 'axios'\n\ninterface Get {\n  get<T = any>():Promise<T>\n}\n\ntype Output = {\n  name: string\n  num: number\n}\n\nclass Http implements Get{\n  async get<T = any>(): Promise<T> {\n    const result = await axios.get('http://localhost:4000')\n    return await result.data\n  }\n}\n;\n(\n  async() => {\n    const http = new Http()\n    const response = await http.get<Output>()\n    console.log(response.name)\n    console.log(response.num)\n  }\n)()\n"
             ],
             "outputs": [
@@ -48,7 +41,7 @@
         {
             "language": "typescript",
             "source": [
-                "// generators\n\nfunction* generateSequence(){\n  yield 1\n  yield 2\n  return 3\n}\nconst generator = generateSequence()\nlet isDone = false\nwhile(isDone !== true){\n  const valor = generator.next()\n  console.log(valor)\n  if(valor.done === true) isDone = true\n}"
+                "// generators\n\nfunction* generateSequence(){\n  yield 1\n  yield 2\n  return 3\n}\nconst generator = generateSequence()\nlet isDone = false\nwhile(isDone !== true){\n  const valor = generator.next()\n  console.log(valor)\n  if(valor.done === true) isDone = true\n}\n"
             ],
             "outputs": [
                 {
@@ -60,6 +53,138 @@
                                 "{ value: 2, done: false }",
                                 "{ value: 3, done: false }",
                                 "{ value: undefined, done: true }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\nexport type Output = {\n  id: string\n  name: string\n  email: string\n}\n\nexport type Input = Omit<Output, 'id'>\n\nexport interface Controller<T = any> {\n  handle<Z = any>(param: T):Promise<Z>\n}\n\nclass SignUp implements Controller {\n  async handle<Output>(param: Input): Promise<Output> {\n    const response = {email:'a',id:'a',name:'a'}\n    return new Promise((resolve, reject) => {\n      resolve()\n    })\n  }\n}\nconst signUp = new SignUp()\n;\n(\n  async() => {\n    const response = await signUp.handle({name:`m`, email:`c`})\n    console.log(response)\n  }\n)()"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const dataAgora = new Date()\nconst value = '2021-01-25T00:30:05.933Z'\nconst diferenca = dataAgora.getTime() - new Date(value).getTime()\nconst horas = diferenca / (1000 * 3600)\nconsole.log(horas)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "24.10573722222222",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const valor = new Date('2021-01-25T00:30:05.933Z')\nconsole.log(valor)\nconsole.log(valor instanceof Date && !isNaN(valor))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "2021-01-25T00:30:05.933Z",
+                                "true",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const firstDate = new Date()\nfirstDate.setDate(firstDate.getDate() - 1)\nconst a = firstDate.toISOString()\nconsole.log(a)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "2022-01-25T21:28:33.735Z",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const faceAttemptsDate = new Date('2021-01-25T00:30:05.933Z')\nconst dd1 = faceAttemptsDate.getTime()\n\nconst timeNow = new Date('2021-01-25T06:30:05.933Z')\nconst dd2 = timeNow.getTime()\nconst  remainTime = (24 - ((dd2 - dd1)/(3600 * 1000)))\nconsole.log('spentTime: ', remainTime)\nconst nextTimeAvailable = timeNow.setTime(timeNow.getTime() + (remainTime * 3600 * 1000))\nconsole.log(new Date(nextTimeAvailable))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "spentTime:  18",
+                                "2021-01-26T00:30:05.933Z",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const date1 = new Date('2022-01-25T00:30:05.933Z').getTime()\nconsole.log(date1)\nconst finalDate = new Date()\n// '2021-01-27T00:30:05.933Z'\nconsole.log(finalDate)\nconst diff = (finalDate.getTime() - date1)/(3600*1000)\nconsole.log(diff)\n\nconsole.log(new Date().getTime())"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "1611534605933",
+                                "1643387001914",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "import moment from 'moment'\n\nconst finalDate = moment(new Date().getTime())\nconst faceAttemptsDate = moment(new Date('2022-01-27T00:30:05.933Z'))\n// const blockedTime = moment(faceAttemptsDate).add(1, 'day').milliseconds();\n\nconsole.log(faceAttemptsDate.valueOf())\nconsole.log(faceAttemptsDate.subtract(1000, 'millisecond'))\n\nconsole.log(new Date(\n  \n))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "1643243405933",
+                                "2022-01-29T17:40:18.729Z",
                                 ""
                             ]
                         }

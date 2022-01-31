@@ -19,7 +19,11 @@
   },
   "homepage": "https://github.com/mayconcarlete/javascript-expert-course#readme",
   "devDependencies": {
+<<<<<<< HEAD
     "@types/jest": "^27.4.0",
+=======
+    "@types/moment": "^2.13.0",
+>>>>>>> 83649e0997b803f0ce3c225331b2c641d88d5cdd
     "mocha": "^8.4.0",
     "nyc": "^15.1.0",
     "sinon": "^9.2.4",
@@ -31,7 +35,11 @@
     "email-validator": "^2.0.4",
     "faker": "^5.5.3",
     "fastify": "^3.25.3",
+<<<<<<< HEAD
     "jest": "^27.4.7",
+=======
+    "moment": "^2.29.1",
+>>>>>>> 83649e0997b803f0ce3c225331b2c641d88d5cdd
     "validator": "^13.7.0"
   }
 }
