@@ -4,7 +4,7 @@
   "description": "",
   "main": "teste.js",
   "scripts": {
-    "test": "npx mocha -w --parallel **/**/*.test.js",
+    "test": "jest",
     "nyc:cov": "npx nyc npx mocha -w --parallel /home/maycon/dev/pessoal/javascript-expert-course/1-tests/class-05-project/part-3/tests/unit-tests/car-service.js"
   },
   "repository": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mayconcarlete/javascript-expert-course#readme",
   "devDependencies": {
+    "@types/jest": "^27.4.0",
     "mocha": "^8.4.0",
     "nyc": "^15.1.0",
     "sinon": "^9.2.4",
@@ -30,6 +31,7 @@
     "email-validator": "^2.0.4",
     "faker": "^5.5.3",
     "fastify": "^3.25.3",
+    "jest": "^27.4.7",
     "validator": "^13.7.0"
   }
 }
