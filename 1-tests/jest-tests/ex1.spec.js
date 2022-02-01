@@ -1,6 +1,21 @@
+const calc = require('./ex1')
 
 describe('First test suit', () => {
- it('Should return 4 when sum 2 + 2', () => {
-   expect(2+2).toBe(4)
- })
+ it('should test jest mock', () => {
+   const mock = jest.fn((data) => data)
+
+   const result = mock('foo')
+
+   expect(result).toBe('foo')
+   expect(mock).toHaveBeenCalled()
+   expect(mock).toHaveBeenCalledWith('foo')
+   expect(mock).toHaveBeenCalledTimes(1)
+  })
+  it('should mock add', () => {
+    // const mock = jest.fn(add)
+    jest.spyOn(calc, 'add').mockReturnValue(3)
+    const result = calc.add(1, 1)
+
+    expect(result).toBe(3)
+  })
 })
