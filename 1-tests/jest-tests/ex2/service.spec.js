@@ -1,5 +1,5 @@
 const { facetec, Person } = require('./service')
-
+// jest.mock('./service')
 describe('test service', () => {
   it('should call facetec with correct params', () => {
     // const mockedFacetec = jest.fn(facetec.verifyFace)
@@ -15,5 +15,15 @@ describe('test service', () => {
     const response = sut.validate('mail@mail.com')
 
     expect(response).toBe(true)
+  })
+
+  it('should return false mocking correctly', () => {
+    const sut = new Person()
+
+    jest.spyOn(sut, 'isValid').mockReturnValueOnce(false)
+
+    const response = sut.validate('mail@mail.com')
+
+    expect(response).toBeFalsy()
   })
 })
