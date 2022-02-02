@@ -1,4 +1,4 @@
-const { facetec } = require('./service')
+const { facetec, Person } = require('./service')
 
 describe('test service', () => {
   it('should call facetec with correct params', () => {
@@ -8,5 +8,12 @@ describe('test service', () => {
     const response = facetec.verifyFace('z', 'x')
 
     expect(response).toBe('2021-01-25T00:30:05.933Z')
+  })
+  it('should mock correctly the method class', () => {
+    const sut = new Person()
+
+    const response = sut.validate('mail@mail.com')
+
+    expect(response).toBe(true)
   })
 })

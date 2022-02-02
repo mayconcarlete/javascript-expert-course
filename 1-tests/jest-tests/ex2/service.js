@@ -5,4 +5,13 @@ const facetec = {
   }
 }
 
-module.exports = { facetec }
+class Person {
+  validate(email){
+    return this.isValid(email)
+  }
+  isValid(email){
+    return true
+  }
+}
+
+module.exports = { facetec, Person }
