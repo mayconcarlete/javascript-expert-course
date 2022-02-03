@@ -42,4 +42,12 @@ describe('test service', () => {
 
     expect(result).toBeFalsy()
   })
+
+  it('should mock return to an email', () => {
+    const mockValidateEmail = jest.fn(validateEmail).mockImplementationOnce((email) => 'valid@mail.com')
+
+    const result = mockValidateEmail('any@mail.com')
+
+    expect(result).toEqual('valid@mail.com')
+  })
 })
