@@ -14,4 +14,8 @@ class Person {
   }
 }
 
-module.exports = { facetec, Person }
+const validateEmail = (email) => {
+  return true
+}
+
+module.exports = { facetec, Person, validateEmail }

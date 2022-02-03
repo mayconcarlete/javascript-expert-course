@@ -1,4 +1,4 @@
-const { facetec, Person } = require('./service')
+const { facetec, Person, validateEmail } = require('./service')
 // jest.mock('./service')
 describe('test service', () => {
   it('should call facetec with correct params', () => {
@@ -25,5 +25,13 @@ describe('test service', () => {
     const response = sut.validate('mail@mail.com')
 
     expect(response).toBeFalsy()
+  })
+
+  it('should return true when email is valid', () => {
+    const validateMock = jest.fn(validateEmail)
+
+    const result = validateMock('valid@mail.com')
+
+    expect(result).toBeTruthy()
   })
 })
