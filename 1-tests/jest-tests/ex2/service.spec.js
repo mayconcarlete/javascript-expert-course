@@ -34,4 +34,12 @@ describe('test service', () => {
 
     expect(result).toBeTruthy()
   })
+
+  it('should return false when validateEmail fails', () => {
+    const validateMock = jest.fn(validateEmail).mockImplementationOnce((email) => false)
+
+    const result = validateMock('invalid@mail.com')
+
+    expect(result).toBeFalsy()
+  })
 })
