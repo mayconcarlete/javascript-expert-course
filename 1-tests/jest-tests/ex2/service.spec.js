@@ -1,4 +1,8 @@
-const { facetec, Person, validateEmail } = require('./service')
+const axios = require('axios')
+
+jest.mock('axios')
+
+const { facetec, Person, validateEmail, makeRequest } = require('./service')
 // jest.mock('./service')
 describe('test service', () => {
   it('should call facetec with correct params', () => {
@@ -49,5 +53,11 @@ describe('test service', () => {
     const result = mockValidateEmail('any@mail.com')
 
     expect(result).toEqual('valid@mail.com')
+  })
+
+  it('it should return mocked data when makeRequest is called', async() => {
+    axios.get.mockResolvedValue({data:{message:'ok'}})
+    const result = await makeRequest()
+    expect(result.data).toEqual({message: 'ok'})
   })
 })
