@@ -25,4 +25,9 @@ const makeRequest = async( url = 'https://pokeapi.co/api/v2/pokemon/ditto' ) => 
   return response
 }
 
-module.exports = { facetec, Person, validateEmail, makeRequest }
+const getDate = () => {
+  const date = Date.now(1)
+  return date
+}
+
+module.exports = { facetec, Person, validateEmail, makeRequest, getDate }
