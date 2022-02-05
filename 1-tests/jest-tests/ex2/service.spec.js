@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { facetec, Person, validateEmail, makeRequest, getDate } = require('./service')
+const { facetec, Person, validateEmail, makeRequest, getDate, getDateConstructor } = require('./service')
 
 jest.mock('axios')
 // jest.mock('./service')
@@ -79,5 +79,15 @@ describe('test service', () => {
     jest.spyOn(global.Date, 'now').mockImplementationOnce(() => new Date(4))
     const data = getDate()
     expect(data).toEqual(new Date(4))
+  })
+
+  it('Should mock Date constructor', () => {
+    const mockedDate = new Date(10)
+    jest.spyOn(globalThis, 'Date').mockImplementationOnce(() => {
+      return mockedDate
+    })
+    const data2 = new Date()
+
+    expect(data2).toEqual(mockedDate)
   })
 })

@@ -30,4 +30,9 @@ const getDate = () => {
   return date
 }
 
-module.exports = { facetec, Person, validateEmail, makeRequest, getDate }
+const getDateConstructor = () => {
+  const date = new Date()
+  return date
+}
+
+module.exports = { facetec, Person, validateEmail, makeRequest, getDate, getDateConstructor }
