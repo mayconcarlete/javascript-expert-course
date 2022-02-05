@@ -60,4 +60,18 @@ describe('test service', () => {
     const result = await makeRequest()
     expect(result.data).toEqual({message: 'ok'})
   })
+  it('should return different values given different urls',async()=> {
+    axios.get.mockImplementation(async (url) => {
+      if(url === 'a') return Promise.resolve({message: 'a'})
+      if(url === 'b') return Promise.resolve({message: 'b'})
+      return Promise.resolve({message: 'c'})
+    })
+    const resultA = await makeRequest('a')
+    const resultB = await makeRequest('b')
+    const resultC = await makeRequest('c')
+
+    expect(resultA).toEqual({message: 'a'})
+    expect(resultB).toEqual({message: 'b'})
+    expect(resultC).toEqual({message: 'c'})
+  })
 })
