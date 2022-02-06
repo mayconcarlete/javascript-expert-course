@@ -1,4 +1,6 @@
 const axios = require('axios').default
+const validator = require('email-validator')
+
 
 const facetec = {
   verifyFace(v1, v2){
@@ -35,4 +37,8 @@ const getDateConstructor = () => {
   return date
 }
 
-module.exports = { facetec, Person, validateEmail, makeRequest, getDate, getDateConstructor }
+const validateEmailLib = (email) => {
+  return validator.validate(email)
+}
+
+module.exports = { facetec, Person, validateEmail, makeRequest, getDate, getDateConstructor, validateEmailLib }
