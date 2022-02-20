@@ -191,6 +191,33 @@
                     ]
                 }
             ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class L1 {\n\n}\n\n\nObject.assign(L1.prototype, {\n  sum(a:number, b:number):number{\n    return a + b\n  }\n})\n\nconst soma = new L1()\n\nconsole.log(soma.sum(1, 2))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "TypeError",
+                                "message": "soma.sum is not a function",
+                                "stack": "    at <Cell 12> [14, 7]\n    at <Cell 12> [12, 46]"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\n"
+            ],
+            "outputs": []
         }
     ]
 }
