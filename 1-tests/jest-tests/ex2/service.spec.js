@@ -1,8 +1,15 @@
 const axios = require('axios')
-const { facetec, Person, validateEmail, makeRequest, getDate, getDateConstructor } = require('./service')
+const emailValidator = require('email-validator')
 
-jest.mock('axios')
+const { facetec, Person, validateEmail, makeRequest, getDate, getDateConstructor, validateEmailLib } = require('./service')
+
+// jest.mock('axios')
 // jest.mock('./service')
+jest.mock('email-validator', () => ({
+  validate(){
+    return false
+  }
+}))
 
 describe('test service', () => {
   it('should call facetec with correct params', () => {
@@ -89,5 +96,21 @@ describe('test service', () => {
     const data2 = new Date()
 
     expect(data2).toEqual(mockedDate)
+  })
+
+  it('should mock email-validator library and return false', () =>{
+    const email = 'invalid@mail.com'
+
+    const isValidEmail = validateEmailLib(email)
+
+    expect(isValidEmail).toBeFalsy()
+  })
+
+  it('should return true when email is valid', () => {
+    const email = 'valid@mail.com'
+    jest.spyOn(emailValidator, 'validate').mockReturnValueOnce(true)
+    const isValidEmail = validateEmailLib(email)
+
+    expect(isValidEmail).toBeTruthy()
   })
 })
