@@ -32,10 +32,13 @@
   "dependencies": {
     "axios": "^0.24.0",
     "chai": "^4.3.4",
+    "dynogels": "^9.1.0",
+    "dynogels-promisified": "^1.0.4",
     "email-validator": "^2.0.4",
     "faker": "^5.5.3",
     "fastify": "^3.25.3",
     "jest": "^27.4.7",
+    "joi": "^13.7.0",
     "moment": "^2.29.1",
     "validator": "^13.7.0"
   }
