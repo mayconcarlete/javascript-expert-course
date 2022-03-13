@@ -1,23 +1,79 @@
 
-const Test = require("./test")
+// const Test = require("./test")
 
+// const items = [
+//   {
+//     eventId: "evento-1",
+//     uid: "valid_user_id",
+//     type: "dialog",
+//     startTime: Date.now(),
+//     endTime: Date.now() + 100000000000,
+// },
+// {
+//   eventId: "evento-2",
+//   uid: "valid_user_id",
+//   type: "dialog",
+//   startTime: Date.now(),
+//   endTime: Date.now() + 100000000000,
+// },{
+//   eventId: "evento-3",
+//   uid: "valid_user_id",
+//   type: "dialog",
+//   startTime: Date.now(),
+//   endTime: Date.now() + 100000000000,
+// },
+// ]
+// class Test2 extends Test{
+//   async getAsynnc(){
+//     super.scan().execAsync()
+//   }
 
-class Test2 extends Test{
-  async getAsynnc(){
-    super.scan().execAsync()
-  }
+//   async pega(){
+//    const dialogs = await Test.scan()
+//             .where("type")
+//             .eq("dialog")
+//             .execAsync();
 
-  pega(){
+//     return dialogs
+//   }
+//   async salvaAe(items){
+//     const result = await Test.createAsync(items)
+//     return result
+//   }
+// }
 
-    return new Promise((resolve, reject) => {
-      Test.scan()
-          .execAsync()
-          .then((referrals) => resolve(referrals.Items))
-          .catch((err) => reject(err));
-  });
-  }
+// const sut = new Test2()
+
+// // sut.pega().then(dialog => {
+// //   console.log(dialog.Items[0].attrs)
+// //   Test.destroy(dialog.Items[0].attrs.eventId, "dialog",(err, data) => {
+// //     if(err) console.log(err)
+// //     console.log("dataL: ", data)
+// //   })
+// // }).catch(console.log)
+// sut.salvaAe(items).then(console.log).catch(console.log)
+
+const listOfDialogs = [
+  {
+      eventId: "event-1",
+      uid: "bla",
+      type: "dialog",
+      startTime: Date.now(),
+      endTime: Date.now() ,
+      unseenDate: Date.now(),
+  },
+  {
+      eventId: "event-2",
+      uid: "bla",
+      type: "dialog",
+      startTime: Date.now(),
+      endTime: Date.now(),
+      unseenDate: Date.now(),
+  },
+];
+function getNotSeenDialog(dialogs) {
+  return dialogs.find((dialog) => !dialog.unseenDate);
 }
 
-const sut = new Test2()
-
-sut.pega().then(data => console.log(data[1])).catch(console.log)
+const result = getNotSeenDialog(listOfDialogs)
+console.log(result)

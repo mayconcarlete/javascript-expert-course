@@ -9,7 +9,7 @@ vogels.AWS.config.update({
   endpoint: 'http://localhost:4200'
 })
 
-const Test = vogels.define("test", {
+const Test = vogels.define("LiveOpEvents", {
   hashKey: "eventId",
   rangeKey: "type",
 
@@ -41,5 +41,6 @@ Object.assign(Test.prototype, {
     console.log('hello world')
   }
 })
+
 // Test.config({dynamodb:{config:{region:'ca-central-1'}}})
 module.exports = Test

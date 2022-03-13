@@ -215,9 +215,22 @@
         {
             "language": "typescript",
             "source": [
-                "\n"
+                "class BlockedNewAppVersion {\n  constructor(\n      private readonly unblockDate: number,\n      private readonly userAttempts: number\n  ) {}\n  get values() {\n      return {\n          unblockDate: this.unblockDate,\n          userAttempts: this.userAttempts,\n      };\n  }\n}\n\nconst test = new BlockedNewAppVersion(1, 1)\nconsole.log(test.values)"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.error",
+                            "value": {
+                                "name": "ReferenceError",
+                                "message": "exports is not defined",
+                                "stack": "    at <Cell 13> [4, 1]\n    at <Cell 13> [22, 46]"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
