@@ -215,18 +215,36 @@
         {
             "language": "typescript",
             "source": [
-                "class BlockedNewAppVersion {\n  constructor(\n      private readonly unblockDate: number,\n      private readonly userAttempts: number\n  ) {}\n  get values() {\n      return {\n          unblockDate: this.unblockDate,\n          userAttempts: this.userAttempts,\n      };\n  }\n}\n\nconst test = new BlockedNewAppVersion(1, 1)\nconsole.log(test.values)"
+                "class BlockedNewAppVersion {\n  constructor(\n      private readonly unblockDate: number,\n      private readonly userAttempts: number\n  ) {}\n  get values() {\n      return {\n          unblockDate: this.unblockDate,\n          userAttempts: this.userAttempts,\n      };\n  }\n}\n\nconst blockedNewAppVersion = new BlockedNewAppVersion(1, 1)\nconsole.log(blockedNewAppVersion.values)"
             ],
             "outputs": [
                 {
                     "items": [
                         {
-                            "mime": "application/vnd.code.notebook.error",
-                            "value": {
-                                "name": "ReferenceError",
-                                "message": "exports is not defined",
-                                "stack": "    at <Cell 13> [4, 1]\n    at <Cell 13> [22, 46]"
-                            }
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ unblockDate: 1, userAttempts: 1 }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "import moment, {Moment} from \"moment\"\nconst tempo = moment(\"2022-03-13T11:14:44-03:00\").utc().valueOf()\n\nconsole.log(tempo)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "1647180884000",
+                                ""
+                            ]
                         }
                     ]
                 }
