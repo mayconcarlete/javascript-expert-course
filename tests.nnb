@@ -21,6 +21,13 @@
         {
             "language": "typescript",
             "source": [
+                "// Joi validation with range of values\n(\n  async function(){\n    try{\n      const schema = Joi.object({\n        values: Joi.number().valid(1,2,3).required()});\n        await schema.validate({values: 4})\n        console.log(\"ok\")\n    }catch(error){\n      console.log(error)\n    }\n  }\n)()"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
                 "import axios from 'axios'\n\ninterface Get {\n  get<T = any>():Promise<T>\n}\n\ntype Output = {\n  name: string\n  num: number\n}\n\nclass Http implements Get{\n  async get<T = any>(): Promise<T> {\n    const result = await axios.get('http://localhost:4000')\n    return await result.data\n  }\n}\n;\n(\n  async() => {\n    const http = new Http()\n    const response = await http.get<Output>()\n    console.log(response.name)\n    console.log(response.num)\n  }\n)()\n"
             ],
             "outputs": [
