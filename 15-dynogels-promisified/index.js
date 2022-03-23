@@ -53,27 +53,40 @@
 // // }).catch(console.log)
 // sut.salvaAe(items).then(console.log).catch(console.log)
 
-const listOfDialogs = [
-  {
-      eventId: "event-1",
-      uid: "bla",
-      type: "dialog",
-      startTime: Date.now(),
-      endTime: Date.now() ,
-      unseenDate: Date.now(),
-  },
-  {
-      eventId: "event-2",
-      uid: "bla",
-      type: "dialog",
-      startTime: Date.now(),
-      endTime: Date.now(),
-      unseenDate: Date.now(),
-  },
-];
-function getNotSeenDialog(dialogs) {
-  return dialogs.find((dialog) => !dialog.unseenDate);
-}
+// const listOfDialogs = [
+//   {
+//       eventId: "event-1",
+//       uid: "bla",
+//       type: "dialog",
+//       startTime: Date.now(),
+//       endTime: Date.now() ,
+//       unseenDate: Date.now(),
+//   },
+//   {
+//       eventId: "event-2",
+//       uid: "bla",
+//       type: "dialog",
+//       startTime: Date.now(),
+//       endTime: Date.now(),
+//       unseenDate: Date.now(),
+//   },
+// ];
+// function getNotSeenDialog(dialogs) {
+//   return dialogs.find((dialog) => !dialog.unseenDate);
+// }
 
-const result = getNotSeenDialog(listOfDialogs)
-console.log(result)
+// const result = getNotSeenDialog(listOfDialogs)
+// console.log(result)
+
+const Appeals = require("./test")
+
+const appeals = new Appeals()
+
+;
+
+(
+  async() => {
+    const getAppeals = await appeals.createAppeal("valid_uid", "valid@mail.com")
+    console.log(getAppeals.get("appeals"))
+  }
+)()
