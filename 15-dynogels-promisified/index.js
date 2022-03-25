@@ -86,7 +86,7 @@ const appeals = new Appeals()
 
 (
   async() => {
-    const getAppeals = await appeals.createAppeal("valid_uid", "valid@mail.com")
-    console.log(getAppeals.get("appeals"))
+    const getAppeals = await Appeals.getAsync({uid:"valid_uid", email:"valid@mail.com"})
+    console.log(getAppeals)
   }
 )()
