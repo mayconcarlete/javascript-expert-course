@@ -1,6 +1,4 @@
-const moment = require('moment')
+const auth0Server = require("./16-auth0")
 
-const data = moment('2022-01-25T00:30:05.933Z')
-const data2 = moment()
-
-console.log(data2.diff(data, 'milliseconds'))
+const PORT = process.env.PORT || 3002
+auth0Server.listen(3002, () => console.log(`We are online at port: ${PORT}`))
