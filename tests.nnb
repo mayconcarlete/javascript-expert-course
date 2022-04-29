@@ -5,18 +5,7 @@
             "source": [
                 "import fastify from 'fastify'\n\nconst server = fastify()\n\nserver.get('/', async(req, reply) => {\n  return {\n    name: 'Maykerops',\n    num: 31\n  }\n})\n\nserver.listen(4000)"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "text/plain",
-                            "value": [
-                                "\u001b[32m'http://127.0.0.1:4000'\u001b[39m"
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
         },
         {
             "language": "typescript",
@@ -30,42 +19,14 @@
             "source": [
                 "import axios from 'axios'\n\ninterface Get {\n  get<T = any>():Promise<T>\n}\n\ntype Output = {\n  name: string\n  num: number\n}\n\nclass Http implements Get{\n  async get<T = any>(): Promise<T> {\n    const result = await axios.get('http://localhost:4000')\n    return await result.data\n  }\n}\n;\n(\n  async() => {\n    const http = new Http()\n    const response = await http.get<Output>()\n    console.log(response.name)\n    console.log(response.num)\n  }\n)()\n"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "undefined",
-                                "undefined",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
         },
         {
             "language": "typescript",
             "source": [
                 "// generators\n\nfunction* generateSequence(){\n  yield 1\n  yield 2\n  return 3\n}\nconst generator = generateSequence()\nlet isDone = false\nwhile(isDone !== true){\n  const valor = generator.next()\n  console.log(valor)\n  if(valor.done === true) isDone = true\n}\n"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "{ value: 1, done: false }",
-                                "{ value: 2, done: false }",
-                                "{ value: 3, done: false }",
-                                "{ value: undefined, done: true }",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
         },
         {
             "language": "typescript",
@@ -79,58 +40,21 @@
             "source": [
                 "const dataAgora = new Date()\nconst value = '2021-01-25T00:30:05.933Z'\nconst diferenca = dataAgora.getTime() - new Date(value).getTime()\nconst horas = diferenca / (1000 * 3600)\nconsole.log(horas)"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "24.10573722222222",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
         },
         {
             "language": "typescript",
             "source": [
                 "const valor = new Date('2021-01-25T00:30:05.933Z')\nconsole.log(valor)\nconsole.log(valor instanceof Date && !isNaN(valor))"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "2021-01-25T00:30:05.933Z",
-                                "true",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
         },
         {
             "language": "typescript",
             "source": [
                 "const firstDate = new Date()\nfirstDate.setDate(firstDate.getDate() - 1)\nconst a = firstDate.toISOString()\nconsole.log(a)"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "2022-01-25T21:28:33.735Z",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
         },
         {
             "language": "typescript",
@@ -144,45 +68,54 @@
             "source": [
                 "const faceAttemptsDate = new Date('2021-01-25T00:30:05.933Z')\nconst dd1 = faceAttemptsDate.getTime()\n\nconst timeNow = new Date('2021-01-25T06:30:05.933Z')\nconst dd2 = timeNow.getTime()\nconst  remainTime = (24 - ((dd2 - dd1)/(3600 * 1000)))\nconsole.log('spentTime: ', remainTime)\nconst nextTimeAvailable = timeNow.setTime(timeNow.getTime() + (remainTime * 3600 * 1000))\nconsole.log(new Date(nextTimeAvailable))"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "spentTime:  18",
-                                "2021-01-26T00:30:05.933Z",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
         },
         {
             "language": "typescript",
             "source": [
                 "const date1 = new Date('2022-01-25T00:30:05.933Z').getTime()\nconsole.log(date1)\nconst finalDate = new Date()\n// '2021-01-27T00:30:05.933Z'\nconsole.log(finalDate)\nconst diff = (finalDate.getTime() - date1)/(3600*1000)\nconsole.log(diff)\n\nconsole.log(new Date().getTime())"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "1611534605933",
-                                "1643387001914",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
         },
         {
             "language": "typescript",
             "source": [
                 "import moment from 'moment'\n\nconst finalDate = moment(new Date().getTime())\nconst faceAttemptsDate = moment(new Date('2022-01-27T00:30:05.933Z'))\n// const blockedTime = moment(faceAttemptsDate).add(1, 'day').milliseconds();\n\nconsole.log(faceAttemptsDate.valueOf())\nconsole.log(faceAttemptsDate.subtract(1000, 'millisecond'))\n\nconsole.log(new Date(\n  \n))"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class L1 {\n\n}\n\n\nObject.assign(L1.prototype, {\n  sum(a:number, b:number):number{\n    return a + b\n  }\n})\n\nconst soma = new L1()\n\nconsole.log(soma.sum(1, 2))"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "class BlockedNewAppVersion {\n  constructor(\n      private readonly unblockDate: number,\n      private readonly userAttempts: number\n  ) {}\n  get values() {\n      return {\n          unblockDate: this.unblockDate,\n          userAttempts: this.userAttempts,\n      };\n  }\n}\n\nconst blockedNewAppVersion = new BlockedNewAppVersion(1, 1)\nconsole.log(blockedNewAppVersion.values)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "import moment, {Moment} from \"moment\"\nconst tempo = moment(\"2022-03-13T11:14:44-03:00\").utc().valueOf()\n\nconsole.log(tempo)"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "import axios from 'axios'\n;\n(async() => {\n  const body = {\n    name: \"Maykera\",\n    lastName: \"Carlete\"\n  }\n  const head = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer sidhasd1234234234kj\"\n\n  }\n  const data = await axios.post(\"http://localhost:4001/\", body, {headers:head})\n  console.log(data)\n})()"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "interface Controller {\n  handle(request:Object):Promise<string>\n}\n\nclass SignUp implements Controller{\n  async handle(request: Object): Promise<string> {\n    return 'Maycon'\n  }\n}\n\nclass DecoratorSignUp implements Controller{\n  constructor(\n    private readonly signup: Controller\n  ){}\n  async handle(request: Object): Promise<string> {\n    const result = await this.signup.handle(request)\n    return result.toLocaleUpperCase()\n  }\n}\n\nclass MockSignUp implements Controller{\n  numberOfCalls:number = 0\n  calledWith:Object = {}\n  constructor(\n    private readonly signUp: Controller\n  ){}\n  async handle(request: Object): Promise<string> {\n    this.numberOfCalls++\n    this.calledWith = request\n    const result = await this.signUp.handle(request)\n    return result\n  }\n}\n\nconst signup = new SignUp()\n// const decorator = new DecoratorSignUp(signup)\n;\n(\n  async () => {\n    const mockSignUp = new MockSignUp(signup)\n    const response = await mockSignUp.handle({name: \"Thomas Janssen\", nickName:\"my friend\"})\n    if(mockSignUp.numberOfCalls === 1){\n      console.log(\"called once\")\n    }\n    if(mockSignUp.params.name === \"Thomas Janssen\"){\n      console.log(\"Yess\")\n    }\n    console.log(response)\n  }\n)()"
             ],
             "outputs": [
                 {
@@ -190,8 +123,9 @@
                         {
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
-                                "1643243405933",
-                                "2022-01-29T17:40:18.729Z",
+                                "called once",
+                                "Yess",
+                                "Maycon",
                                 ""
                             ]
                         }
@@ -202,7 +136,7 @@
         {
             "language": "typescript",
             "source": [
-                "class L1 {\n\n}\n\n\nObject.assign(L1.prototype, {\n  sum(a:number, b:number):number{\n    return a + b\n  }\n})\n\nconst soma = new L1()\n\nconsole.log(soma.sum(1, 2))"
+                "import axios from \"axios\";\n\nexport class CognitoService {\n    constructor(configuration) {\n        this.baseUrl = `https://cognito-idp.${configuration.region}.amazonaws.com/`;\n        this.configuration = configuration;\n    }\n    async makeRequest(url, options) {\n        const response = await axios.post(url, options.data, {\n            headers: options.headers,\n        });\n        return response;\n    }\n    async getSession(authParameters) {\n        const options = {\n            headers: {\n                \"Content-Type\": \"application/x-amz-json-1.1\",\n                \"X-Amz-Target\":\n                    \"AWSCognitoIdentityProviderService.InitiateAuth\",\n            },\n            data: {\n                AuthParameters: {\n                    USERNAME: authParameters.username,\n                    PASSWORD: authParameters.password,\n                },\n                AuthFlow: \"USER_PASSWORD_AUTH\",\n                ClientId: this.configuration.clientId,\n            },\n        };\n        const response = await this.makeRequest(this.baseUrl, options);\n        return response;\n    }\n}\n"
             ],
             "outputs": [
                 {
@@ -210,303 +144,10 @@
                         {
                             "mime": "application/vnd.code.notebook.error",
                             "value": {
-                                "name": "TypeError",
-                                "message": "soma.sum is not a function",
-                                "stack": "    at <Cell 12> [14, 7]\n    at <Cell 12> [12, 46]"
+                                "name": "ReferenceError",
+                                "message": "exports is not defined",
+                                "stack": "    at <Cell 18> [4, 1]\n    at <Cell 18> [37, 46]"
                             }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "class BlockedNewAppVersion {\n  constructor(\n      private readonly unblockDate: number,\n      private readonly userAttempts: number\n  ) {}\n  get values() {\n      return {\n          unblockDate: this.unblockDate,\n          userAttempts: this.userAttempts,\n      };\n  }\n}\n\nconst blockedNewAppVersion = new BlockedNewAppVersion(1, 1)\nconsole.log(blockedNewAppVersion.values)"
-            ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "{ unblockDate: 1, userAttempts: 1 }",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "import moment, {Moment} from \"moment\"\nconst tempo = moment(\"2022-03-13T11:14:44-03:00\").utc().valueOf()\n\nconsole.log(tempo)"
-            ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "1647180884000",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "import axios from 'axios'\n;\n(async() => {\n  const body = {\n    name: \"Maykera\",\n    lastName: \"Carlete\"\n  }\n  const head = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer sidhasd1234234234kj\"\n\n  }\n  const data = await axios.post(\"http://localhost:4001/\", body, {headers:head})\n  console.log(data)\n})()"
-            ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "{",
-                                "  status: 200,",
-                                "  statusText: 'OK',",
-                                "  headers: {",
-                                "    'x-powered-by': 'Express',",
-                                "    'content-type': 'application/json; charset=utf-8',",
-                                "    'content-length': '39',",
-                                "    etag: 'W/\"27-wmDh1ISmUIobCQbUxyJUrd+nGFM\"',",
-                                "    date: 'Tue, 22 Mar 2022 20:48:20 GMT',",
-                                "    connection: 'close'",
-                                "  },",
-                                "  config: {",
-                                "    transitional: {",
-                                "      silentJSONParsing: true,",
-                                "      forcedJSONParsing: true,",
-                                "      clarifyTimeoutError: false",
-                                "    },",
-                                "    adapter: [Function: httpAdapter],",
-                                "    transformRequest: [ [Function: transformRequest] ],",
-                                "    transformResponse: [ [Function: transformResponse] ],",
-                                "    timeout: 0,",
-                                "    xsrfCookieName: 'XSRF-TOKEN',",
-                                "    xsrfHeaderName: 'X-XSRF-TOKEN',",
-                                "    maxContentLength: -1,",
-                                "    maxBodyLength: -1,",
-                                "    validateStatus: [Function: validateStatus],",
-                                "    headers: {",
-                                "      'Content-Type': 'application/json',",
-                                "      Authorization: 'Bearer sidhasd1234234234kj',",
-                                "      'User-Agent': 'axios/0.24.0',",
-                                "      'Content-Length': 39",
-                                "    },",
-                                "    method: 'post',",
-                                "    url: 'http://localhost:4001/',",
-                                "    data: '{\"name\":\"Maykera\",\"lastName\":\"Carlete\"}'",
-                                "  },",
-                                "  request: <ref *1> ClientRequest {",
-                                "    _events: [Object: null prototype] {",
-                                "      abort: [Function (anonymous)],",
-                                "      aborted: [Function (anonymous)],",
-                                "      connect: [Function (anonymous)],",
-                                "      error: [Function (anonymous)],",
-                                "      socket: [Function (anonymous)],",
-                                "      timeout: [Function (anonymous)],",
-                                "      prefinish: [Function: requestOnPrefinish]",
-                                "    },",
-                                "    _eventsCount: 7,",
-                                "    _maxListeners: undefined,",
-                                "    outputData: [],",
-                                "    outputSize: 0,",
-                                "    writable: true,",
-                                "    destroyed: false,",
-                                "    _last: true,",
-                                "    chunkedEncoding: false,",
-                                "    shouldKeepAlive: false,",
-                                "    _defaultKeepAlive: true,",
-                                "    useChunkedEncodingByDefault: true,",
-                                "    sendDate: false,",
-                                "    _removedConnection: false,",
-                                "    _removedContLen: false,",
-                                "    _removedTE: false,",
-                                "    _contentLength: null,",
-                                "    _hasBody: true,",
-                                "    _trailer: '',",
-                                "    finished: true,",
-                                "    _headerSent: true,",
-                                "    socket: Socket {",
-                                "      connecting: false,",
-                                "      _hadError: false,",
-                                "      _parent: null,",
-                                "      _host: 'localhost',",
-                                "      _readableState: [ReadableState],",
-                                "      _events: [Object: null prototype],",
-                                "      _eventsCount: 7,",
-                                "      _maxListeners: undefined,",
-                                "      _writableState: [WritableState],",
-                                "      allowHalfOpen: false,",
-                                "      _sockname: null,",
-                                "      _pendingData: null,",
-                                "      _pendingEncoding: '',",
-                                "      server: null,",
-                                "      _server: null,",
-                                "      parser: null,",
-                                "      _httpMessage: [Circular *1],",
-                                "      [Symbol(async_id_symbol)]: 295,",
-                                "      [Symbol(kHandle)]: [TCP],",
-                                "      [Symbol(kSetNoDelay)]: false,",
-                                "      [Symbol(lastWriteQueueSize)]: 0,",
-                                "      [Symbol(timeout)]: null,",
-                                "      [Symbol(kBuffer)]: null,",
-                                "      [Symbol(kBufferCb)]: null,",
-                                "      [Symbol(kBufferGen)]: null,",
-                                "      [Symbol(kCapture)]: false,",
-                                "      [Symbol(kBytesRead)]: 0,",
-                                "      [Symbol(kBytesWritten)]: 0,",
-                                "      [Symbol(RequestTimeout)]: undefined",
-                                "    },",
-                                "    _header: 'POST / HTTP/1.1\\r\\n' +",
-                                "      'Content-Type: application/json\\r\\n' +",
-                                "      'Authorization: Bearer sidhasd1234234234kj\\r\\n' +",
-                                "      'User-Agent: axios/0.24.0\\r\\n' +",
-                                "      'Content-Length: 39\\r\\n' +",
-                                "      'Host: localhost:4001\\r\\n' +",
-                                "      'Connection: close\\r\\n' +",
-                                "      '\\r\\n',",
-                                "    _keepAliveTimeout: 0,",
-                                "    _onPendingData: [Function: noopPendingOutput],",
-                                "    agent: Agent {",
-                                "      _events: [Object: null prototype],",
-                                "      _eventsCount: 2,",
-                                "      _maxListeners: undefined,",
-                                "      defaultPort: 80,",
-                                "      protocol: 'http:',",
-                                "      options: [Object],",
-                                "      requests: {},",
-                                "      sockets: [Object],",
-                                "      freeSockets: {},",
-                                "      keepAliveMsecs: 1000,",
-                                "      keepAlive: false,",
-                                "      maxSockets: Infinity,",
-                                "      maxFreeSockets: 256,",
-                                "      scheduling: 'lifo',",
-                                "      maxTotalSockets: Infinity,",
-                                "      totalSocketCount: 1,",
-                                "      [Symbol(kCapture)]: false",
-                                "    },",
-                                "    socketPath: undefined,",
-                                "    method: 'POST',",
-                                "    maxHeaderSize: undefined,",
-                                "    insecureHTTPParser: undefined,",
-                                "    path: '/',",
-                                "    _ended: true,",
-                                "    res: IncomingMessage {",
-                                "      _readableState: [ReadableState],",
-                                "      _events: [Object: null prototype],",
-                                "      _eventsCount: 3,",
-                                "      _maxListeners: undefined,",
-                                "      socket: [Socket],",
-                                "      httpVersionMajor: 1,",
-                                "      httpVersionMinor: 1,",
-                                "      httpVersion: '1.1',",
-                                "      complete: true,",
-                                "      headers: [Object],",
-                                "      rawHeaders: [Array],",
-                                "      trailers: {},",
-                                "      rawTrailers: [],",
-                                "      aborted: false,",
-                                "      upgrade: false,",
-                                "      url: '',",
-                                "      method: null,",
-                                "      statusCode: 200,",
-                                "      statusMessage: 'OK',",
-                                "      client: [Socket],",
-                                "      _consuming: false,",
-                                "      _dumped: false,",
-                                "      req: [Circular *1],",
-                                "      responseUrl: 'http://localhost:4001/',",
-                                "      redirects: [],",
-                                "      [Symbol(kCapture)]: false,",
-                                "      [Symbol(RequestTimeout)]: undefined",
-                                "    },",
-                                "    aborted: false,",
-                                "    timeoutCb: null,",
-                                "    upgradeOrConnect: false,",
-                                "    parser: null,",
-                                "    maxHeadersCount: null,",
-                                "    reusedSocket: false,",
-                                "    host: 'localhost',",
-                                "    protocol: 'http:',",
-                                "    _redirectable: Writable {",
-                                "      _writableState: [WritableState],",
-                                "      _events: [Object: null prototype],",
-                                "      _eventsCount: 2,",
-                                "      _maxListeners: undefined,",
-                                "      _options: [Object],",
-                                "      _ended: true,",
-                                "      _ending: true,",
-                                "      _redirectCount: 0,",
-                                "      _redirects: [],",
-                                "      _requestBodyLength: 39,",
-                                "      _requestBodyBuffers: [],",
-                                "      _onNativeResponse: [Function (anonymous)],",
-                                "      _currentRequest: [Circular *1],",
-                                "      _currentUrl: 'http://localhost:4001/',",
-                                "      [Symbol(kCapture)]: false",
-                                "    },",
-                                "    [Symbol(kCapture)]: false,",
-                                "    [Symbol(kNeedDrain)]: false,",
-                                "    [Symbol(corked)]: 0,",
-                                "    [Symbol(kOutHeaders)]: [Object: null prototype] {",
-                                "      'content-type': [Array],",
-                                "      authorization: [Array],",
-                                "      'user-agent': [Array],",
-                                "      'content-length': [Array],",
-                                "      host: [Array]",
-                                "    }",
-                                "  },",
-                                "  data: { name: 'Maykera', lastName: 'Carlete' }",
-                                "}",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "const appeals = [{createdAt: 1},{createdAt: 2}]\nconst lastAppeal = appeals.reduce((previous, currently) => {\n  return previous.createdAt < currently.createdAt ? currently : previous;\n});\nconsole.log(lastAppeal)"
-            ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "{ createdAt: 1 }",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "const array = [{createdAt: 1},{createdAt: 2}]\n\nconsole.log(\n  Math.max(...array)\n)"
-            ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "NaN",
-                                ""
-                            ]
                         }
                     ]
                 }
